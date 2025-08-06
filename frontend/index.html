@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>App 2 Frontend</title></head>
+<body>
+  <h1>App 2 Frontend</h1>
+  <div id="response"></div>
+  <script>
+    fetch('http://backend:5000/data')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('response').innerText = data.message;
+      });
+  </script>
+</body>
+</html>
