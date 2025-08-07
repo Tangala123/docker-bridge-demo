@@ -36,7 +36,6 @@ docker pull redis
 docker run -d --name redis redis
 git clone https://github.com/Tangala123/docker-bridge-demo.git
 cd docker-bridge-demo/backend
-cd docker-bridge-demo/backend
 docker build -t flask-backend .
 docker run -d --name backend --link redis -p 5000:5000 flask-backend
 cd ../frontend
