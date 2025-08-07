@@ -30,7 +30,7 @@ docker run -d --name frontend  --network JHC -p 8080:5000 python-frontend
 ```
 ### 5. Access the app in your browser
 ### Open: http://localhost:8080
-### Connect ec2 server 
+### Connect ec2 server - default bridge network 
 ```
 docker pull redis
 docker run -d --name redis redis
@@ -42,5 +42,18 @@ docker run -d --name backend --link redis -p 5000:5000 flask-backend
 cd ../frontend
 docker build -t nginx-frontend .
 docker run -d --name frontend -p 80:80 nginx-frontend
+Check browser <ec2-public-ip:5000> this is backend app and <ec2-public-ip:80> this is frontend
 ```
+### Connect ec2 server - custom bridge network 
 
+```
+cd docker-bridge-demo/
+docker network create JHC
+cd frontend/
+docker build -t simple-frontend .
+docker run -d --name frontend-ui --network JHC -p 8081:80 simple-frontend
+cd backend/
+docker build -t python-backend .
+docker run -d --name redis --network JHC redis:alpine
+docker run -d --name backend --network JHC -p 8080:5000 python-backend
+Check browser <ec2-public-ip:8080> this is backend app and <ec2-public-ip:8081> this is frontend
