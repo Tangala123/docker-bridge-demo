@@ -31,7 +31,7 @@ docker run -d --name frontend  --network JHC -p 8080:5000 python-frontend
 ### 5. Access the app in your browser
 ### Open: http://localhost:8080
 ### Connect ec2 server 
-'''
+```
 docker pull redis
 docker run -d --name redis redis
 git clone https://github.com/Tangala123/docker-bridge-demo.git
@@ -42,5 +42,5 @@ docker run -d --name backend --link redis -p 5000:5000 flask-backend
 cd ../frontend
 docker build -t nginx-frontend .
 docker run -d --name frontend -p 80:80 nginx-frontend
-'''
+```
 
