@@ -42,6 +42,8 @@ docker run -d --name backend --link redis -p 5000:5000 flask-backend
 cd ../frontend
 docker build -t nginx-frontend .
 docker run -d --name frontend -p 80:80 nginx-frontend
+docker images
+docker ps
 Check browser <ec2-public-ip:5000> this is backend app and <ec2-public-ip:80> this is frontend
 ```
 ### Connect ec2 server - custom bridge network 
@@ -56,4 +58,7 @@ cd backend/
 docker build -t python-backend .
 docker run -d --name redis --network JHC redis:alpine
 docker run -d --name backend --network JHC -p 8080:5000 python-backend
+docker images
+docker ps
 Check browser <ec2-public-ip:8080> this is backend app and <ec2-public-ip:8081> this is frontend
+```
